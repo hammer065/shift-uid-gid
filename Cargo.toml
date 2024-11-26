@@ -1,0 +1,31 @@
+[package]
+name = "shift-uid-gid"
+version = "0.1.0"
+edition = "2021"
+authors = ["Dario Mehlich"]
+description = "Shift user and group IDs of files and folders"
+license = "GPL-3"
+readme = "README.md"
+repository = "https://github.com/hammer065/shift-uid-gid"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+walkdir = "2"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+debug = false
+strip = true
+codegen-units = 1
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+enum_glob_use = "deny"
+pedantic = "deny"
+nursery = "deny"
+unwrap_used = "deny"
